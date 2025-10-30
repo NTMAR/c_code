@@ -1,31 +1,27 @@
 #include <stdio.h>
+#include <math.h>
+
 int main()
 {
-    int i,j,n;
-    int k=5;
-    for(i=1; i<=15; i++)
+    int i, j;
+    int rows = 21, cols = 21;   // square grid
+    int r = 9;                  // radius
+    int cx = rows / 2, cy = cols / 2;
+
+    for (i = 0; i < rows; i++)
     {
-        for(j=1; j<=16; j++)
+        for (j = 0; j < cols; j++)
         {
-            if((i==1&&j>5&&j<12))
-            {
-                printf("0");
-            }
-            else if(j==k)
-            {
-            printf("0");
-            }
-            else if(j==1&&i>5&&i<12)
-            {
-            printf("0");
-            }
+            int dx = i - cx;
+            int dy = j - cy;
+
+            if (abs(dx*dx + dy*dy - r*r) < r) 
+                printf("0 ");
             else
-            {
-            printf(" ");
-            }
-           
+                printf("  ");   // double space
         }
-        k--;
         printf("\n");
     }
+
+    return 0;
 }
